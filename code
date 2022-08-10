@@ -66,3 +66,27 @@ def gen_cls_matrix(y_test,ypred):
 def score(model):
     print('training score',model.score(x_train,y_train))
     print('testing score',model.score(x_test,y_test))
+    
+#1 Decision Tree
+m1 = DecisionTreeClassifier(criterion='gini',max_depth=5)
+m1.fit(x_train,y_train)
+train_test_score(m1)
+ypred_m1 = m1.predict(x_test)
+print(ypred_m1)
+gen_cls_matix(y_test,ypred_m1)
+
+#2 Random forest classifier
+m2 = RandomForestClassifier(n_estimators=55,criterion='gini',max_depth=5)
+m2.fit(x_train,y_train)
+train_test_score(m2)
+ypred_m2 = m2.predict(x_test)
+print(ypred_m2)
+gen_cls_matix(y_test,ypred_m2)
+
+#3 SVM
+m3 = SVC(kernel='linear',C=1)
+m3.fit(x_train,y_train)
+train_test_score(m3)
+ypred_m3 = m3.predict(x_test)
+print(ypred_m3)
+gen_cls_matix(y_test,ypred_m3)
